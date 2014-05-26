@@ -1,0 +1,119 @@
+@CHARSET "UTF-8";
+.layout {
+	width:1000px;
+	height:1240px;
+	min-width:1000px;
+	min-height:1000px;
+	margin-left:300px;
+	margin-right:300px;
+	background-image:url("../image/backcolor.png");
+	background-repeat:no-repeat;
+}
+
+.header {
+	background-image:url("../image/top/lllogo_1000.png");
+	background-position:center;
+	background-attachment:scroll;
+	background-repeat:no-repeat;
+	width:auto;
+	height:140px;
+}
+
+.leftside {
+	float:left;
+	width:300px;
+	height:1000px;
+}
+
+.login {
+	float:left;
+	width:300px;
+	height:200px;
+}
+
+.notice {
+	float:left;
+	width:300px;
+	height:400px;
+	background-image:url("../image/leftside/notice/notice2.png");
+}
+
+.notice input {
+	float:right;
+	padding-top:80px;
+}
+
+.media {
+	float:300px;
+	width:300px;
+	height:400px;
+}
+
+.content {
+	float:right;
+	width:700px;
+	height:800px;
+	background-image:url("../image/content/background.png");
+}
+
+.footer {
+	clear:both;
+	height:100px;
+	background-color:#EFE4C6;
+}
+
+.login {
+	background-image: url("../image/login/login_background.png");
+	background-repeat: no-repeat;
+}
+
+.login input[type = text] {
+	position:relative;
+	top:95px;
+	margin-left:90px;
+	width:120px;
+	height:auto
+}
+
+.login input[type = password] {
+	position:relative;
+	top:93px;
+	margin-left:90px;
+	width:120px;
+	height:auto
+}
+
+.login input[name = loginbt] {
+	background-image:url("../image/login/loginBtn.png");
+	position:relative;
+	width:60px;
+	height:50px;
+	top:40px;
+	cursor:pointer;
+	left:220px
+}
+
+.login input[name = registerbt] {
+	background-image:url("../image/login/join.PNG");
+	position:relative;
+	width:70px;
+	height:40px;
+	top:90px;
+}
+
+.login input[name = searchpwbt] {
+	background-image:url("../image/login/findBtn.png");
+	position:relative;
+	width:140px;
+	height:40px;
+	top:90px;
+}
+.top {
+	position:relative;
+	top:110px;	
+	padding-left:60px;
+	background-color:#EFE4C6;
+}
+.top input {
+	padding-right:30px;
+}
