@@ -1,58 +1,23 @@
 #################
 ## Eclipse
 #################
-
-.project
-tmp/
-*.tmp
-*.bak
-*.swp
-*~.nib
-local.properties
-.classpath
-.settings/
-.loadpath
-.class
-.springBeans
-target/
-
-# External tool builders
-.externalToolBuilders/
-
-# Locally stored "Eclipse launch configurations"
-*.launch
-
-# CDT-specific
-.cproject
-
-# PDT-specific
-.buildpath
-
-*.log
-
-# Others
-*.Cache
-
-#############
-## Windows detritus
-#############
-
-# Windows image file caches
+/target
+*.class
+pom.properties
 Thumbs.db
-ehthumbs.db
-
-# Folder config file
-Desktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Mac crap
+.settings
+.classpath
+/bin
+*.java.hsp
+*.sonarj
+*.sw*
 .DS_Store
+.springBeans
+.externalToolBuilders
+.project
 
 
 #############
 ## README.md
 #############
-
 *.md
