@@ -108,6 +108,15 @@
 	height:40px;
 	top:90px;
 }
+.login.success {
+	background-image:url("../image/login/logcom.png");
+	background-repeat: no-repeat;
+}
+.login p {
+	font-size: larger;
+	padding-top : 50px;
+	padding-left : 50px;
+}
 .top {
 	position:relative;
 	top:110px;	

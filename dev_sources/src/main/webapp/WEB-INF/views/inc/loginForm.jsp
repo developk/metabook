@@ -5,12 +5,12 @@
 		<table>
 				<tr>
 					<td>
-						<input type="text" name="id" placeholder="id를 입력하세요">
+						<input type="text" name="userid" id="userid" placeholder="id를 입력하세요">
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="password" name="pw" placeholder="비밀번호를 입력하세요">
+						<input type="password" name="userpw" id="userpw" placeholder="비밀번호를 입력하세요">
 					</td>
 				</tr>
 				<tr>

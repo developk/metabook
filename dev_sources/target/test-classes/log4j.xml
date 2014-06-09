@@ -1,41 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
-
-	<!-- Appenders -->
-	<appender name="console" class="org.apache.log4j.ConsoleAppender">
-		<param name="Target" value="System.out" />
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
-		</layout>
-	</appender>
-	
-	<!-- Application Loggers -->
-	<logger name="com.web.metabook">
-		<level value="info" />
-	</logger>
-	
-	<!-- 3rdparty Loggers -->
-	<logger name="org.springframework.core">
-		<level value="info" />
-	</logger>	
-	
-	<logger name="org.springframework.beans">
-		<level value="info" />
-	</logger>
-	
-	<logger name="org.springframework.context">
-		<level value="info" />
-	</logger>
-
-	<logger name="org.springframework.web">
-		<level value="info" />
-	</logger>
-
-	<!-- Root Logger -->
-	<root>
-		<priority value="info" />
-		<appender-ref ref="console" />
-	</root>
-	
-</log4j:configuration>
+    <!-- 콘솔로 보기(디버그) -->
+    <appender name="CONSOLE-debug" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%p - %C{1}  :  %M  %m %n"/>
+        </layout>
+    </appender>
+   
+    <!-- 콘솔로 보기(인포) -->
+    <appender name="CONSOLE-info" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%m ---%d %n"/>
+        </layout>
+    </appender>
+    
+    <!-- Log4Mongo-java 로그 -->
+    <appender class="org.log4mongo.MongoDbAppender" name="mongodb">
+    	<param name="hostname" value="110.45.188.232" />
+    	<param name="port" value="27017" />
+    	<param name="databaseName" value="vcasp" />
+    	<!-- 
+    	<param name="collectionName" value="log_201404" />
+    	<layout class="org.log4mongo.MongoDbPatternLayout">
+    		<param name="ConversionPattern" value="level : %p, class : %c{1}, message : %m" />
+    	</layout>
+		-->
+    </appender>
+   
+    <!-- 매 날짜별 로그 파일 남기기 -->
+    <appender name="LOGFILE-DAILY" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="daily.log"/>
+        <param name="Append" value="true"/>
+        <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p [%t] %-17c{2} (%13F:%L) %3x - %m%n"/>
+        </layout>
+    </appender>
+   
+     <!-- 매 날짜별 로그 파일 남기기(로그인) -->
+    <appender name="LOGFILE-DAILY-LOGIN" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="daily-login.log"/>
+        <param name="Append" value="true"/>
+        <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d - %m%n"/>
+        </layout>
+    </appender>
+   
+     <!-- 매 날짜별 로그 파일 남기기(가입) -->
+    <appender name="LOGFILE-DAILY-JOIN" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="daily-join.log"/>
+        <param name="Append" value="true"/>
+        <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d - %m%n"/>
+        </layout>
+    </appender>
+   
+     <!-- 매 날짜별 로그 파일 남기기(탈퇴) -->
+    <appender name="LOGFILE-DAILY-JOINBREAK" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="daily-joinbreak.log"/>
+        <param name="Append" value="true"/>
+        <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d - %m%n"/>
+        </layout>
+    </appender>
+   
+    <!-- 로그 파일 100KB마다 새로 남기기 -->
+    <appender name="LOGFILE-SIZE" class="org.apache.log4j.RollingFileAppender">
+        <param name="file" value="Size.log"/>
+        <param name="Append" value="true"/>
+        <param name="MaxFileSize" value="100KB"/>
+       <param name="MaxBackupIndex" value="5"/>  
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p [%t] %-17c{2} (%13F:%L) %3x - %m%n"/>
+        </layout>
+    </appender>
+   
+    <!-- XML 형태로 로그 파일 남기기 -->
+    <appender name="LOGFILE-XML" class="org.apache.log4j.FileAppender">
+        <param name="file" value="XML.log"/>
+        <param name="Append" value="true"/>
+        <layout class="org.apache.log4j.xml.XMLLayout"/>
+    </appender>
+    <logger name="org.apache">
+        <level value="WARN"/>
+    </logger>
+   
+   <logger name="jdbc.resultset" additivity="false">
+   	<level value="WARN" />
+   </logger>
+   
+   <logger name="org.springframework.data.mongodb.core.MongoTemplate">
+   	<level value="debug" />
+   	<appender-ref ref="mongodb" />
+   </logger>   
+    
+    <root>
+        <level value="INFO"/>
+        <appender-ref ref="CONSOLE-debug"/>
+       
+        <!--<appender-ref ref="LOGFILE-DAILY"/>-->
+        <!--<appender-ref ref="LOGFILE-SIZE"/>-->
+        <!--<appender-ref ref="CONSOLE-info"/>-->
+        <!--<appender-ref ref="LOGFILE-XML"/>-->
+    </root></log4j:configuration>
